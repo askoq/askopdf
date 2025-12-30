@@ -74,6 +74,10 @@ class _PdfViewerState extends State<PdfViewer> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _open,
+        child: const Icon(Icons.folder_open),
+      ),
     );
   }
 }
