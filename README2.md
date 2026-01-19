@@ -17,7 +17,7 @@ In the "Create Group" window, on the **General** tab, the following settings are
 * **Group Name**: Enter a name in the corresponding field. If no input is provided, the system will assign a default name - "Unnamed Group".
 * **Identifier (Icon)**: Select a symbol (emoji) for visual identification of the group in the list.
 
-![Create group](https://files.catbox.moe/pscxj8.gif)
+![Create group](https://files.catbox.moe/mq6m1n.gif)
 
 ## 3. Visualization and Style Settings (Appearance Tab)
 
