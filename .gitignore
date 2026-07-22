@@ -26,6 +26,10 @@ migrate_working_dir/
 /build/
 /coverage/
 
+/windows/flutter/ephemeral/
+/linux/flutter/ephemeral/
+/macos/Flutter/ephemeral/
+
 app.*.symbols
 app.*.map.json
 
