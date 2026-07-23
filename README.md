@@ -25,14 +25,6 @@
   />
 </p>
 
-<p align="center">
-  <img
-    width="900"
-    alt="AskoPDF screenshot"
-    src="https://github.com/user-attachments/assets/fb8a2292-8a57-4dd8-84fb-d6d9f5088960"
-  />
-</p>
-
 ---
 
 ## About
@@ -48,8 +40,6 @@ Supported platforms:
 The required Gelide core and PDFium libraries are already included in the repository, so no additional setup is needed for them
 
 ---
-
-## Requirements
 
 To build AskoPDF, you will need:
 
@@ -70,7 +60,7 @@ If something is missing, the command will show what still needs to be installed 
 
 ---
 
-## Run from source
+# Run from source
 
 Clone the repository:
 
