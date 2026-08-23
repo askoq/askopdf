@@ -1,9 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:askopdf_view/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:asko_pdf/main.dart';
 
 void main() {
-  testWidgets('App starts', (tester) async {
-    await tester.pumpWidget(const PdfViewer());
-    expect(find.text('Open PDF'), findsOneWidget);
+  testWidgets('shows the open-file prompt on startup', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+
+    await tester.pumpWidget(const MyApp());
+    await tester.pumpAndSettle();
+
+    expect(find.text('Open File'), findsOneWidget);
   });
 }
