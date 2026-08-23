@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FLUTTER_VERSION: 3.35.7
+  FLUTTER_VERSION: 3.44.8
 
 jobs:
   windows:
@@ -37,7 +37,7 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get --enforce-lockfile
+        run: flutter pub get
 
       - name: Build application
         run: flutter build windows --release --no-pub
@@ -79,7 +79,7 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get --enforce-lockfile
+        run: flutter pub get
 
       - name: Build application
         run: flutter build linux --release --no-pub
@@ -113,7 +113,7 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get --enforce-lockfile
+        run: flutter pub get
 
       - name: Build application
         run: flutter build macos --release --no-pub
