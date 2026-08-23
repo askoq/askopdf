@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:desktop_drop/desktop_drop.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:asko_pdf/services/recent_files_service.dart';
 import 'package:asko_pdf/services/document_state_service.dart';
 import 'package:asko_pdf/widgets/pdf_navigation_drawer.dart';
@@ -171,14 +171,25 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
   }
 
   Future<void> _openPdfFile() async {
-    final result = await FilePicker.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['pdf'],
-    );
-
-    if (!mounted || result == null) return;
-    final filePath = result.files.single.path;
-    if (filePath != null) unawaited(_openFile(filePath));
+    try {
+      const typeGroup = XTypeGroup(
+        label: 'PDF files',
+        extensions: ['pdf'],
+        mimeTypes: ['application/pdf'],
+        uniformTypeIdentifiers: ['com.adobe.pdf'],
+      );
+      final file = await openFile(acceptedTypeGroups: [typeGroup]);
+      if (!mounted || file == null) return;
+      unawaited(_openFile(file.path));
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Failed to open file picker: $e'),
+          ),
+        );
+      }
+    }
   }
 
   Future<void> _openFile(String filePath, {bool fromRecent = false}) async {
@@ -199,7 +210,6 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
       return;
     }
 
-    // make sure file hasn't changed
     if (fromRecent) {
       final ok = await _recentFilesService.verifyRecentFile(filePath);
       if (!mounted) return;
